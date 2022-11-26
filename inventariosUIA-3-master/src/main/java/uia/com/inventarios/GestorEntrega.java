@@ -32,6 +32,8 @@ public class GestorEntrega extends EntregaNivelInventario
 
 
 
+
+
     public List<SolicitudEntregaMaterial> getItems()
     {
         return this.items;
@@ -48,6 +50,7 @@ public class GestorEntrega extends EntregaNivelInventario
         String existencia = "";
         IEntregaNivelInventario inventario=null;
         SolicitudEntregaMaterial newSSM = new SolicitudEntregaMaterial(super.inventario, id, solicitante, categoria);
+
         return newSSM;
     }
 
@@ -56,10 +59,18 @@ public class GestorEntrega extends EntregaNivelInventario
 
     }
 
+
+
     @Override
     public SolicitudEntregaMaterial nuevaSolicitudEntrega(String s) {
         return null;
     }
 
 
+    public void serializaNivelInventario(String s) throws IOException {
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(new File("ReporteNivelInventario-10.json"), this);
+
+    }
 }

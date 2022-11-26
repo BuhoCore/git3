@@ -69,11 +69,6 @@ public class SolicitudEntregaMaterial extends RegistroItem implements IEntregaNi
     }
 
     @Override
-    public void cargaSolicitudEntregaToInventario(String nombre) {
-
-    }
-
-    @Override
     public void cargaSolicitudEntregaToInventario() {
 
     }

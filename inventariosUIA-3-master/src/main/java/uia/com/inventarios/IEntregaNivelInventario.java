@@ -21,7 +21,5 @@ public interface IEntregaNivelInventario {
                        String idProveedor, String descProveedor);
 
 
-    void cargaSolicitudEntregaToInventario(String nombre);
-
     void cargaSolicitudEntregaToInventario();
 }

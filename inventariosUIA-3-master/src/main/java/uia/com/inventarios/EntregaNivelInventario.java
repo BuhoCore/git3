@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 
 @JsonTypeInfo(
@@ -89,36 +90,27 @@ public class EntregaNivelInventario implements IEntregaNivelInventario
     }
 
     @Override
-    public void cargaSolicitudEntregaToInventario(String nombre) {
-
-        ObjectMapper mapper = new ObjectMapper();
-
-        try {
-            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-            inventario =  mapper.readValue(new FileInputStream(nombre), NivelInventario.class );
-        }catch (JsonParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }catch (JsonMappingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        this.inventario.print();
-
-
-    }
-
-
     public void cargaSolicitudEntregaToInventario() {
 
+        for(int i=0; i<this.sem.getInventario().getItems().size();i++)
+        {
+            for(Map.Entry<String,InfoItem> item : this.sem.getInventario().getItems().entrySet())
+            {
+                InfoItem partida = item.getValue();
+
+                for(Map.Entry<String,InfoItem> subpartida : partida.getItems().entrySet()){
+
+                    for(Map.Entry<String,InfoItem> categoria : subpartida.getValue().getItems().entrySet()){
+                        categoria.getValue().print();
+                    }
+                }
+;
+            }
+
+        }
+
+
     }
-
-
-
 
     public void cargaInventario(String nombre)
     {

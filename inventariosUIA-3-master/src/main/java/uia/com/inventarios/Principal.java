@@ -70,7 +70,9 @@ public class Principal {
         GestorEntrega gestorEntrega = new GestorEntrega(inventario);
         gestorEntrega.cargaSolicitudEntrega("SolicitudEntrega_1.json");   // Esta es la solicitud o archivo fuente o documento que se quiere agregar o que se usa para actualizar
         gestorEntrega.cargaInventario("ReporteNivelInventario-8.json");   // Este es documento objetivo.. el que quieren actualizar
-        gestorEntrega.cargaSolicitudEntregaToInventario("ReporteNivelInventario-9.json"); // Este es el documento resultado de la actualización
+        gestorEntrega.cargaSolicitudEntregaToInventario();
+        gestorEntrega.serializaNivelInventario("ReporteNivelInventario-10.json");
+
 
 
         SpringApplication.run(Principal.class, args);
